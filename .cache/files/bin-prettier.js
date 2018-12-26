@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 'use strict';
 
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
@@ -10,6 +11,7 @@ var util = _interopDefault(require('util'));
 var events = _interopDefault(require('events'));
 var thirdParty = require('./third-party');
 var thirdParty__default = thirdParty['default'];
+var readline = _interopDefault(require('readline'));
 
 var name = "@changjinglu/prettier";
 var version$1 = "1.16.0-dev";
@@ -20763,7 +20765,7 @@ var perf_hooks = ">= 8.5";
 var process$1 = ">= 1";
 var punycode = true;
 var querystring = true;
-var readline = true;
+var readline$1 = true;
 var repl = true;
 var stream = true;
 var string_decoder = true;
@@ -20805,7 +20807,7 @@ var core$3 = {
   process: process$1,
   punycode: punycode,
   querystring: querystring,
-  readline: readline,
+  readline: readline$1,
   repl: repl,
   stream: stream,
   string_decoder: string_decoder,
@@ -20849,7 +20851,7 @@ var core$4 = Object.freeze({
 	process: process$1,
 	punycode: punycode,
 	querystring: querystring,
-	readline: readline,
+	readline: readline$1,
 	repl: repl,
 	stream: stream,
 	string_decoder: string_decoder,
@@ -28133,7 +28135,7 @@ var commonOptions = {
 
 var CATEGORY_JAVASCRIPT = "JavaScript"; // format based on https://github.com/prettier/prettier/blob/master/src/main/core-options.js
 
-var options$4 = {
+var options$3 = {
   arrowParens: {
     since: "1.9.0",
     category: CATEGORY_JAVASCRIPT,
@@ -28455,7 +28457,7 @@ var json5$1 = Object.freeze({
 
 var require$$0$21 = ( javascript$1 && javascript ) || javascript$1;
 
-var require$$1$9 = ( jsx$1 && jsx ) || jsx$1;
+var require$$1$8 = ( jsx$1 && jsx ) || jsx$1;
 
 var require$$2$10 = ( typescript$1 && typescript ) || typescript$1;
 
@@ -28484,7 +28486,7 @@ var languages = [createLanguage(require$$0$21, {
     filenames: [],
     extensions: [".js.flow"]
   }
-}), createLanguage(require$$1$9, {
+}), createLanguage(require$$1$8, {
   override: {
     since: "0.0.0",
     parsers: ["babylon", "flow"],
@@ -28537,7 +28539,7 @@ var printers = {
 };
 var languageJs = {
   languages,
-  options: options$4,
+  options: options$3,
   printers
 };
 
@@ -29721,7 +29723,7 @@ var printerPostcss = {
   massageAstNode: clean_1$2
 };
 
-var options$7 = {
+var options$6 = {
   singleQuote: commonOptions.singleQuote
 };
 
@@ -29857,7 +29859,7 @@ var scss$1 = Object.freeze({
 
 var require$$0$23 = ( css$3 && css$2 ) || css$3;
 
-var require$$1$10 = ( postcss$1 && postcss ) || postcss$1;
+var require$$1$9 = ( postcss$1 && postcss ) || postcss$1;
 
 var require$$2$11 = ( less$1 && less ) || less$1;
 
@@ -29869,7 +29871,7 @@ var languages$1 = [createLanguage(require$$0$23, {
     parsers: ["css"],
     vscodeLanguageIds: ["css"]
   }
-}), createLanguage(require$$1$10, {
+}), createLanguage(require$$1$9, {
   override: {
     since: "1.4.0",
     parsers: ["css"],
@@ -29896,7 +29898,7 @@ var printers$1 = {
 };
 var languageCss = {
   languages: languages$1,
-  options: options$7,
+  options: options$6,
   printers: printers$1
 };
 
@@ -30594,7 +30596,7 @@ var printerGraphql = {
   canAttachComment: canAttachComment$1
 };
 
-var options$10 = {
+var options$9 = {
   bracketSpacing: commonOptions.bracketSpacing
 };
 
@@ -30637,7 +30639,7 @@ var printers$3 = {
 };
 var languageGraphql = {
   languages: languages$3,
-  options: options$10,
+  options: options$9,
   printers: printers$3
 };
 
@@ -31886,7 +31888,7 @@ var printerMarkdown = {
   insertPragma: pragma$6.insertPragma
 };
 
-var options$13 = {
+var options$12 = {
   proseWrap: commonOptions.proseWrap,
   singleQuote: commonOptions.singleQuote
 };
@@ -31955,7 +31957,7 @@ var printers$4 = {
 };
 var languageMarkdown = {
   languages: languages$4,
-  options: options$13,
+  options: options$12,
   printers: printers$4
 };
 
@@ -34439,7 +34441,7 @@ var printerHtml = {
 
 var CATEGORY_HTML = "HTML"; // format based on https://github.com/prettier/prettier/blob/master/src/main/core-options.js
 
-var options$16 = {
+var options$15 = {
   htmlWhitespaceSensitivity: {
     since: "1.15.0",
     category: CATEGORY_HTML,
@@ -34526,7 +34528,7 @@ var vue$1 = Object.freeze({
 
 var require$$0$31 = ( html$2 && html$1 ) || html$2;
 
-var require$$1$11 = ( vue$1 && vue ) || vue$1;
+var require$$1$10 = ( vue$1 && vue ) || vue$1;
 
 var languages$5 = [createLanguage(require$$0$31, {
   override: {
@@ -34547,7 +34549,7 @@ var languages$5 = [createLanguage(require$$0$31, {
     extensions: [".mjml" // MJML is considered XML in Linguist but it should be formatted as HTML
     ]
   }
-}), createLanguage(require$$1$11, {
+}), createLanguage(require$$1$10, {
   override: {
     since: "1.10.0",
     parsers: ["vue"],
@@ -34560,7 +34562,7 @@ var printers$5 = {
 var languageHtml = {
   languages: languages$5,
   printers: printers$5,
-  options: options$16
+  options: options$15
 };
 
 function isPragma$1(text) {
@@ -35312,7 +35314,7 @@ var printerYaml = {
   insertPragma: insertPragma$8
 };
 
-var options$19 = {
+var options$18 = {
   bracketSpacing: commonOptions.bracketSpacing,
   singleQuote: commonOptions.singleQuote,
   proseWrap: commonOptions.proseWrap
@@ -35369,7 +35371,7 @@ var languageYaml = {
   printers: {
     yaml: printerYaml
   },
-  options: options$19
+  options: options$18
 };
 
 // plugin will look for `eval("require")()` and transform to `require()` in the bundle,
@@ -42198,6 +42200,2051 @@ var src = {
   }
 };
 
-var prettier = src;
+var prettier$2 = src;
+
+var at;
+var ch;
+var escapee = {
+  '"': '"',
+  '\\': '\\',
+  '/': '/',
+  b: '\b',
+  f: '\f',
+  n: '\n',
+  r: '\r',
+  t: '\t'
+};
+var text;
+var error = function error(m) {
+  // Call error when something is wrong.
+  throw {
+    name: 'SyntaxError',
+    message: m,
+    at: at,
+    text: text
+  };
+};
+var next = function next(c) {
+  // If a c parameter is provided, verify that it matches the current character.
+  if (c && c !== ch) {
+    error("Expected '" + c + "' instead of '" + ch + "'");
+  } // Get the next character. When there are no more characters,
+  // return the empty string.
+
+
+  ch = text.charAt(at);
+  at += 1;
+  return ch;
+};
+var number$2 = function number() {
+  // Parse a number value.
+  var number,
+      string = '';
+
+  if (ch === '-') {
+    string = '-';
+    next('-');
+  }
+
+  while (ch >= '0' && ch <= '9') {
+    string += ch;
+    next();
+  }
+
+  if (ch === '.') {
+    string += '.';
+
+    while (next() && ch >= '0' && ch <= '9') {
+      string += ch;
+    }
+  }
+
+  if (ch === 'e' || ch === 'E') {
+    string += ch;
+    next();
+
+    if (ch === '-' || ch === '+') {
+      string += ch;
+      next();
+    }
+
+    while (ch >= '0' && ch <= '9') {
+      string += ch;
+      next();
+    }
+  }
+
+  number = +string;
+
+  if (!isFinite(number)) {
+    error("Bad number");
+  } else {
+    return number;
+  }
+};
+var string$2 = function string() {
+  // Parse a string value.
+  var hex,
+      i,
+      string = '',
+      uffff; // When parsing for string values, we must look for " and \ characters.
+
+  if (ch === '"') {
+    while (next()) {
+      if (ch === '"') {
+        next();
+        return string;
+      } else if (ch === '\\') {
+        next();
+
+        if (ch === 'u') {
+          uffff = 0;
+
+          for (i = 0; i < 4; i += 1) {
+            hex = parseInt(next(), 16);
+
+            if (!isFinite(hex)) {
+              break;
+            }
+
+            uffff = uffff * 16 + hex;
+          }
+
+          string += String.fromCharCode(uffff);
+        } else if (typeof escapee[ch] === 'string') {
+          string += escapee[ch];
+        } else {
+          break;
+        }
+      } else {
+        string += ch;
+      }
+    }
+  }
+
+  error("Bad string");
+};
+var white = function white() {
+  // Skip whitespace.
+  while (ch && ch <= ' ') {
+    next();
+  }
+};
+var word$2 = function word() {
+  // true, false, or null.
+  switch (ch) {
+    case 't':
+      next('t');
+      next('r');
+      next('u');
+      next('e');
+      return true;
+
+    case 'f':
+      next('f');
+      next('a');
+      next('l');
+      next('s');
+      next('e');
+      return false;
+
+    case 'n':
+      next('n');
+      next('u');
+      next('l');
+      next('l');
+      return null;
+  }
+
+  error("Unexpected '" + ch + "'");
+};
+var value;
+var array$4 = function array() {
+  // Parse an array value.
+  var array = [];
+
+  if (ch === '[') {
+    next('[');
+    white();
+
+    if (ch === ']') {
+      next(']');
+      return array; // empty array
+    }
+
+    while (ch) {
+      array.push(value());
+      white();
+
+      if (ch === ']') {
+        next(']');
+        return array;
+      }
+
+      next(',');
+      white();
+    }
+  }
+
+  error("Bad array");
+};
+var object$1 = function object() {
+  // Parse an object value.
+  var key,
+      object = {};
+
+  if (ch === '{') {
+    next('{');
+    white();
+
+    if (ch === '}') {
+      next('}');
+      return object; // empty object
+    }
+
+    while (ch) {
+      key = string$2();
+      white();
+      next(':');
+
+      if (Object.hasOwnProperty.call(object, key)) {
+        error('Duplicate key "' + key + '"');
+      }
+
+      object[key] = value();
+      white();
+
+      if (ch === '}') {
+        next('}');
+        return object;
+      }
+
+      next(',');
+      white();
+    }
+  }
+
+  error("Bad object");
+};
+
+value = function value() {
+  // Parse a JSON value. It could be an object, an array, a string, a number,
+  // or a word.
+  white();
+
+  switch (ch) {
+    case '{':
+      return object$1();
+
+    case '[':
+      return array$4();
+
+    case '"':
+      return string$2();
+
+    case '-':
+      return number$2();
+
+    default:
+      return ch >= '0' && ch <= '9' ? number$2() : word$2();
+  }
+}; // Return the json_parse function. It will have access to all of the above
+// functions and variables.
+
+
+var parse$8 = function parse(source, reviver) {
+  var result;
+  text = source;
+  at = 0;
+  ch = ' ';
+  result = value();
+  white();
+
+  if (ch) {
+    error("Syntax error");
+  } // If there is a reviver function, we recursively walk the new structure,
+  // passing each name/value pair to the reviver function for possible
+  // transformation, starting with a temporary root object that holds the result
+  // in an empty key. If there is not a reviver function, we simply return the
+  // result.
+
+
+  return typeof reviver === 'function' ? function walk(holder, key) {
+    var k,
+        v,
+        value = holder[key];
+
+    if (value && typeof value === 'object') {
+      for (k in value) {
+        if (Object.prototype.hasOwnProperty.call(value, k)) {
+          v = walk(value, k);
+
+          if (v !== undefined) {
+            value[k] = v;
+          } else {
+            delete value[k];
+          }
+        }
+      }
+    }
+
+    return reviver.call(holder, key, value);
+  }({
+    '': result
+  }, '') : result;
+};
+
+var escapable = /[\\\"\x00-\x1f\x7f-\x9f\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g;
+var gap;
+var indent$10;
+var meta$1 = {
+  // table of character substitutions
+  '\b': '\\b',
+  '\t': '\\t',
+  '\n': '\\n',
+  '\f': '\\f',
+  '\r': '\\r',
+  '"': '\\"',
+  '\\': '\\\\'
+};
+var rep;
+
+function quote(string) {
+  // If the string contains no control characters, no quote characters, and no
+  // backslash characters, then we can safely slap some quotes around it.
+  // Otherwise we must also replace the offending characters with safe escape
+  // sequences.
+  escapable.lastIndex = 0;
+  return escapable.test(string) ? '"' + string.replace(escapable, function (a) {
+    var c = meta$1[a];
+    return typeof c === 'string' ? c : '\\u' + ('0000' + a.charCodeAt(0).toString(16)).slice(-4);
+  }) + '"' : '"' + string + '"';
+}
+
+function str(key, holder) {
+  // Produce a string from holder[key].
+  var i,
+      // The loop counter.
+  k,
+      // The member key.
+  v,
+      // The member value.
+  length,
+      mind = gap,
+      partial,
+      value = holder[key]; // If the value has a toJSON method, call it to obtain a replacement value.
+
+  if (value && typeof value === 'object' && typeof value.toJSON === 'function') {
+    value = value.toJSON(key);
+  } // If we were called with a replacer function, then call the replacer to
+  // obtain a replacement value.
+
+
+  if (typeof rep === 'function') {
+    value = rep.call(holder, key, value);
+  } // What happens next depends on the value's type.
+
+
+  switch (typeof value) {
+    case 'string':
+      return quote(value);
+
+    case 'number':
+      // JSON numbers must be finite. Encode non-finite numbers as null.
+      return isFinite(value) ? String(value) : 'null';
+
+    case 'boolean':
+    case 'null':
+      // If the value is a boolean or null, convert it to a string. Note:
+      // typeof null does not produce 'null'. The case is included here in
+      // the remote chance that this gets fixed someday.
+      return String(value);
+
+    case 'object':
+      if (!value) return 'null';
+      gap += indent$10;
+      partial = []; // Array.isArray
+
+      if (Object.prototype.toString.apply(value) === '[object Array]') {
+        length = value.length;
+
+        for (i = 0; i < length; i += 1) {
+          partial[i] = str(i, value) || 'null';
+        } // Join all of the elements together, separated with commas, and
+        // wrap them in brackets.
+
+
+        v = partial.length === 0 ? '[]' : gap ? '[\n' + gap + partial.join(',\n' + gap) + '\n' + mind + ']' : '[' + partial.join(',') + ']';
+        gap = mind;
+        return v;
+      } // If the replacer is an array, use it to select the members to be
+      // stringified.
+
+
+      if (rep && typeof rep === 'object') {
+        length = rep.length;
+
+        for (i = 0; i < length; i += 1) {
+          k = rep[i];
+
+          if (typeof k === 'string') {
+            v = str(k, value);
+
+            if (v) {
+              partial.push(quote(k) + (gap ? ': ' : ':') + v);
+            }
+          }
+        }
+      } else {
+        // Otherwise, iterate through all of the keys in the object.
+        for (k in value) {
+          if (Object.prototype.hasOwnProperty.call(value, k)) {
+            v = str(k, value);
+
+            if (v) {
+              partial.push(quote(k) + (gap ? ': ' : ':') + v);
+            }
+          }
+        }
+      } // Join all of the member texts together, separated with commas,
+      // and wrap them in braces.
+
+
+      v = partial.length === 0 ? '{}' : gap ? '{\n' + gap + partial.join(',\n' + gap) + '\n' + mind + '}' : '{' + partial.join(',') + '}';
+      gap = mind;
+      return v;
+  }
+}
+
+var stringify$1 = function stringify(value, replacer, space) {
+  var i;
+  gap = '';
+  indent$10 = ''; // If the space parameter is a number, make an indent string containing that
+  // many spaces.
+
+  if (typeof space === 'number') {
+    for (i = 0; i < space; i += 1) {
+      indent$10 += ' ';
+    }
+  } // If the space parameter is a string, it will be used as the indent string.
+  else if (typeof space === 'string') {
+      indent$10 = space;
+    } // If there is a replacer, it must be a function or an array.
+  // Otherwise, throw an error.
+
+
+  rep = replacer;
+
+  if (replacer && typeof replacer !== 'function' && (typeof replacer !== 'object' || typeof replacer.length !== 'number')) {
+    throw new Error('JSON.stringify');
+  } // Make a fake root object containing our value under the key of ''.
+  // Return the result of stringifying the value.
+
+
+  return str('', {
+    '': value
+  });
+};
+
+var parse$7 = parse$8;
+var stringify = stringify$1;
+var jsonify = {
+  parse: parse$7,
+  stringify: stringify
+};
+
+var json$10 = typeof JSON !== 'undefined' ? JSON : jsonify;
+
+var jsonStableStringify = function jsonStableStringify(obj, opts) {
+  if (!opts) opts = {};
+  if (typeof opts === 'function') opts = {
+    cmp: opts
+  };
+  var space = opts.space || '';
+  if (typeof space === 'number') space = Array(space + 1).join(' ');
+  var cycles = typeof opts.cycles === 'boolean' ? opts.cycles : false;
+
+  var replacer = opts.replacer || function (key, value) {
+    return value;
+  };
+
+  var cmp = opts.cmp && function (f) {
+    return function (node) {
+      return function (a, b) {
+        var aobj = {
+          key: a,
+          value: node[a]
+        };
+        var bobj = {
+          key: b,
+          value: node[b]
+        };
+        return f(aobj, bobj);
+      };
+    };
+  }(opts.cmp);
+
+  var seen = [];
+  return function stringify(parent, key, node, level) {
+    var indent = space ? '\n' + new Array(level + 1).join(space) : '';
+    var colonSeparator = space ? ': ' : ':';
+
+    if (node && node.toJSON && typeof node.toJSON === 'function') {
+      node = node.toJSON();
+    }
+
+    node = replacer.call(parent, key, node);
+
+    if (node === undefined) {
+      return;
+    }
+
+    if (typeof node !== 'object' || node === null) {
+      return json$10.stringify(node);
+    }
+
+    if (isArray$1(node)) {
+      var out = [];
+
+      for (var i = 0; i < node.length; i++) {
+        var item = stringify(node, i, node[i], level + 1) || json$10.stringify(null);
+        out.push(indent + space + item);
+      }
+
+      return '[' + out.join(',') + indent + ']';
+    } else {
+      if (seen.indexOf(node) !== -1) {
+        if (cycles) return json$10.stringify('__cycle__');
+        throw new TypeError('Converting circular structure to JSON');
+      } else seen.push(node);
+
+      var keys = objectKeys(node).sort(cmp && cmp(node));
+      var out = [];
+
+      for (var i = 0; i < keys.length; i++) {
+        var key = keys[i];
+        var value = stringify(node, key, node[key], level + 1);
+        if (!value) continue;
+        var keyValue = json$10.stringify(key) + colonSeparator + value;
+        
+        out.push(indent + space + keyValue);
+      }
+
+      seen.splice(seen.indexOf(node), 1);
+      return '{' + out.join(',') + indent + '}';
+    }
+  }({
+    '': obj
+  }, '', obj, 0);
+};
+
+var isArray$1 = Array.isArray || function (x) {
+  return {}.toString.call(x) === '[object Array]';
+};
+
+var objectKeys = Object.keys || function (obj) {
+  var has = Object.prototype.hasOwnProperty || function () {
+    return true;
+  };
+
+  var keys = [];
+
+  for (var key in obj) {
+    if (has.call(obj, key)) keys.push(key);
+  }
+
+  return keys;
+};
+
+function preserveCamelCase(str) {
+  var isLastCharLower = false;
+  var isLastCharUpper = false;
+  var isLastLastCharUpper = false;
+
+  for (var i = 0; i < str.length; i++) {
+    var c = str[i];
+
+    if (isLastCharLower && /[a-zA-Z]/.test(c) && c.toUpperCase() === c) {
+      str = str.substr(0, i) + '-' + str.substr(i);
+      isLastCharLower = false;
+      isLastLastCharUpper = isLastCharUpper;
+      isLastCharUpper = true;
+      i++;
+    } else if (isLastCharUpper && isLastLastCharUpper && /[a-zA-Z]/.test(c) && c.toLowerCase() === c) {
+      str = str.substr(0, i - 1) + '-' + str.substr(i - 1);
+      isLastLastCharUpper = isLastCharUpper;
+      isLastCharUpper = false;
+      isLastCharLower = true;
+    } else {
+      isLastCharLower = c.toLowerCase() === c;
+      isLastLastCharUpper = isLastCharUpper;
+      isLastCharUpper = c.toUpperCase() === c;
+    }
+  }
+
+  return str;
+}
+
+var camelcase = function camelcase(str) {
+  if (arguments.length > 1) {
+    str = Array.from(arguments).map(function (x) {
+      return x.trim();
+    }).filter(function (x) {
+      return x.length;
+    }).join('-');
+  } else {
+    str = str.trim();
+  }
+
+  if (str.length === 0) {
+    return '';
+  }
+
+  if (str.length === 1) {
+    return str.toLowerCase();
+  }
+
+  if (/^[a-z0-9]+$/.test(str)) {
+    return str;
+  }
+
+  var hasUpperCase = str !== str.toLowerCase();
+
+  if (hasUpperCase) {
+    str = preserveCamelCase(str);
+  }
+
+  return str.replace(/^[_.\- ]+/, '').toLowerCase().replace(/[_.\- ]+(\w|$)/g, function (m, p1) {
+    return p1.toUpperCase();
+  });
+};
+
+/*!
+ * dashify <https://github.com/jonschlinkert/dashify>
+ *
+ * Copyright (c) 2015 Jon Schlinkert.
+ * Licensed under the MIT license.
+ */
+var dashify = function dashify(str) {
+  if (typeof str !== 'string') {
+    throw new TypeError('expected a string');
+  }
+
+  str = str.replace(/([a-z])([A-Z])/g, '$1-$2');
+  str = str.replace(/[ \t\W]/g, '-');
+  str = str.replace(/^-+|-+$/g, '');
+  return str.toLowerCase();
+};
+
+var minimist = function minimist(args, opts) {
+  if (!opts) opts = {};
+  var flags = {
+    bools: {},
+    strings: {},
+    unknownFn: null
+  };
+
+  if (typeof opts['unknown'] === 'function') {
+    flags.unknownFn = opts['unknown'];
+  }
+
+  if (typeof opts['boolean'] === 'boolean' && opts['boolean']) {
+    flags.allBools = true;
+  } else {
+    [].concat(opts['boolean']).filter(Boolean).forEach(function (key) {
+      flags.bools[key] = true;
+    });
+  }
+
+  var aliases = {};
+  Object.keys(opts.alias || {}).forEach(function (key) {
+    aliases[key] = [].concat(opts.alias[key]);
+    aliases[key].forEach(function (x) {
+      aliases[x] = [key].concat(aliases[key].filter(function (y) {
+        return x !== y;
+      }));
+    });
+  });
+  [].concat(opts.string).filter(Boolean).forEach(function (key) {
+    flags.strings[key] = true;
+
+    if (aliases[key]) {
+      flags.strings[aliases[key]] = true;
+    }
+  });
+  var defaults = opts['default'] || {};
+  var argv = {
+    _: []
+  };
+  Object.keys(flags.bools).forEach(function (key) {
+    setArg(key, defaults[key] === undefined ? false : defaults[key]);
+  });
+  var notFlags = [];
+
+  if (args.indexOf('--') !== -1) {
+    notFlags = args.slice(args.indexOf('--') + 1);
+    args = args.slice(0, args.indexOf('--'));
+  }
+
+  function argDefined(key, arg) {
+    return flags.allBools && /^--[^=]+$/.test(arg) || flags.strings[key] || flags.bools[key] || aliases[key];
+  }
+
+  function setArg(key, val, arg) {
+    if (arg && flags.unknownFn && !argDefined(key, arg)) {
+      if (flags.unknownFn(arg) === false) return;
+    }
+
+    var value = !flags.strings[key] && isNumber(val) ? Number(val) : val;
+    setKey(argv, key.split('.'), value);
+    (aliases[key] || []).forEach(function (x) {
+      setKey(argv, x.split('.'), value);
+    });
+  }
+
+  function setKey(obj, keys, value) {
+    var o = obj;
+    keys.slice(0, -1).forEach(function (key) {
+      if (o[key] === undefined) o[key] = {};
+      o = o[key];
+    });
+    var key = keys[keys.length - 1];
+
+    if (o[key] === undefined || flags.bools[key] || typeof o[key] === 'boolean') {
+      o[key] = value;
+    } else if (Array.isArray(o[key])) {
+      o[key].push(value);
+    } else {
+      o[key] = [o[key], value];
+    }
+  }
+
+  function aliasIsBoolean(key) {
+    return aliases[key].some(function (x) {
+      return flags.bools[x];
+    });
+  }
+
+  for (var i = 0; i < args.length; i++) {
+    var arg = args[i];
+
+    if (/^--.+=/.test(arg)) {
+      // Using [\s\S] instead of . because js doesn't support the
+      // 'dotall' regex modifier. See:
+      // http://stackoverflow.com/a/1068308/13216
+      var m = arg.match(/^--([^=]+)=([\s\S]*)$/);
+      var key = m[1];
+      var value = m[2];
+
+      if (flags.bools[key]) {
+        value = value !== 'false';
+      }
+
+      setArg(key, value, arg);
+    } else if (/^--no-.+/.test(arg)) {
+      var key = arg.match(/^--no-(.+)/)[1];
+      setArg(key, false, arg);
+    } else if (/^--.+/.test(arg)) {
+      var key = arg.match(/^--(.+)/)[1];
+      var next = args[i + 1];
+
+      if (next !== undefined && !/^-/.test(next) && !flags.bools[key] && !flags.allBools && (aliases[key] ? !aliasIsBoolean(key) : true)) {
+        setArg(key, next, arg);
+        i++;
+      } else if (/^(true|false)$/.test(next)) {
+        setArg(key, next === 'true', arg);
+        i++;
+      } else {
+        setArg(key, flags.strings[key] ? '' : true, arg);
+      }
+    } else if (/^-[^-]+/.test(arg)) {
+      var letters = arg.slice(1, -1).split('');
+      var broken = false;
+
+      for (var j = 0; j < letters.length; j++) {
+        var next = arg.slice(j + 2);
+
+        if (next === '-') {
+          setArg(letters[j], next, arg);
+          continue;
+        }
+
+        if (/[A-Za-z]/.test(letters[j]) && /=/.test(next)) {
+          setArg(letters[j], next.split('=')[1], arg);
+          broken = true;
+          break;
+        }
+
+        if (/[A-Za-z]/.test(letters[j]) && /-?\d+(\.\d*)?(e-?\d+)?$/.test(next)) {
+          setArg(letters[j], next, arg);
+          broken = true;
+          break;
+        }
+
+        if (letters[j + 1] && letters[j + 1].match(/\W/)) {
+          setArg(letters[j], arg.slice(j + 2), arg);
+          broken = true;
+          break;
+        } else {
+          setArg(letters[j], flags.strings[letters[j]] ? '' : true, arg);
+        }
+      }
+
+      var key = arg.slice(-1)[0];
+
+      if (!broken && key !== '-') {
+        if (args[i + 1] && !/^(-|--)[^-]/.test(args[i + 1]) && !flags.bools[key] && (aliases[key] ? !aliasIsBoolean(key) : true)) {
+          setArg(key, args[i + 1], arg);
+          i++;
+        } else if (args[i + 1] && /true|false/.test(args[i + 1])) {
+          setArg(key, args[i + 1] === 'true', arg);
+          i++;
+        } else {
+          setArg(key, flags.strings[key] ? '' : true, arg);
+        }
+      }
+    } else {
+      if (!flags.unknownFn || flags.unknownFn(arg) !== false) {
+        argv._.push(flags.strings['_'] || !isNumber(arg) ? arg : Number(arg));
+      }
+
+      if (opts.stopEarly) {
+        argv._.push.apply(argv._, args.slice(i + 1));
+
+        break;
+      }
+    }
+  }
+
+  Object.keys(defaults).forEach(function (key) {
+    if (!hasKey(argv, key.split('.'))) {
+      setKey(argv, key.split('.'), defaults[key]);
+      (aliases[key] || []).forEach(function (x) {
+        setKey(argv, x.split('.'), defaults[key]);
+      });
+    }
+  });
+
+  if (opts['--']) {
+    argv['--'] = new Array();
+    notFlags.forEach(function (key) {
+      argv['--'].push(key);
+    });
+  } else {
+    notFlags.forEach(function (key) {
+      argv._.push(key);
+    });
+  }
+
+  return argv;
+};
+
+function hasKey(obj, keys) {
+  var o = obj;
+  keys.slice(0, -1).forEach(function (key) {
+    o = o[key] || {};
+  });
+  var key = keys[keys.length - 1];
+  return key in o;
+}
+
+function isNumber(x) {
+  if (typeof x === 'number') return true;
+  if (/^0x[0-9a-f]+$/i.test(x)) return true;
+  return /^[-+]?(?:\d+(?:\.\d*)?|\.\d+)(e[-+]?\d+)?$/.test(x);
+}
+
+var PLACEHOLDER = null;
+/**
+ * unspecified boolean flag without default value is parsed as `undefined` instead of `false`
+ */
+
+var minimist_1 = function minimist_1(args, options) {
+  var boolean = options.boolean || [];
+  var defaults = options.default || {};
+  var booleanWithoutDefault = boolean.filter(function (key) {
+    return !(key in defaults);
+  });
+  var newDefaults = Object.assign({}, defaults, booleanWithoutDefault.reduce(function (reduced, key) {
+    return Object.assign(reduced, {
+      [key]: PLACEHOLDER
+    });
+  }, {}));
+  var parsed = minimist(args, Object.assign({}, options, {
+    default: newDefaults
+  }));
+  return Object.keys(parsed).reduce(function (reduced, key) {
+    if (parsed[key] !== PLACEHOLDER) {
+      reduced[key] = parsed[key];
+    }
+
+    return reduced;
+  }, {});
+};
+
+var categoryOrder = [coreOptions$1.CATEGORY_OUTPUT, coreOptions$1.CATEGORY_FORMAT, coreOptions$1.CATEGORY_CONFIG, coreOptions$1.CATEGORY_EDITOR, coreOptions$1.CATEGORY_OTHER];
+/**
+ * {
+ *   [optionName]: {
+ *     // The type of the option. For 'choice', see also `choices` below.
+ *     // When passing a type other than the ones listed below, the option is
+ *     // treated as taking any string as argument, and `--option <${type}>` will
+ *     // be displayed in --help.
+ *     type: "boolean" | "choice" | "int" | string;
+ *
+ *     // Default value to be passed to the minimist option `default`.
+ *     default?: any;
+ *
+ *     // Alias name to be passed to the minimist option `alias`.
+ *     alias?: string;
+ *
+ *     // For grouping options by category in --help.
+ *     category?: string;
+ *
+ *     // Description to be displayed in --help. If omitted, the option won't be
+ *     // shown at all in --help (but see also `oppositeDescription` below).
+ *     description?: string;
+ *
+ *     // Description for `--no-${name}` to be displayed in --help. If omitted,
+ *     // `--no-${name}` won't be shown.
+ *     oppositeDescription?: string;
+ *
+ *     // Indicate if this option is simply passed to the API.
+ *     // true: use camelified name as the API option name.
+ *     // string: use this value as the API option name.
+ *     forwardToApi?: boolean | string;
+ *
+ *     // Indicate that a CLI flag should be an array when forwarded to the API.
+ *     array?: boolean;
+ *
+ *     // Specify available choices for validation. They will also be displayed
+ *     // in --help as <a|b|c>.
+ *     // Use an object instead of a string if a choice is deprecated and should
+ *     // be treated as `redirect` instead, or if you'd like to add description for
+ *     // the choice.
+ *     choices?: Array<
+ *       | string
+ *       | { value: string, description?: string, deprecated?: boolean, redirect?: string }
+ *     >;
+ *
+ *     // If the option has a value that is an exception to the regular value
+ *     // constraints, indicate that value here (or use a function for more
+ *     // flexibility).
+ *     exception?: ((value: any) => boolean);
+ *
+ *     // Indicate that the option is deprecated. Use a string to add an extra
+ *     // message to --help for the option, for example to suggest a replacement
+ *     // option.
+ *     deprecated?: true | string;
+ *   }
+ * }
+ *
+ * Note: The options below are sorted alphabetically.
+ */
+
+var options$21 = {
+  check: {
+    type: "boolean",
+    category: coreOptions$1.CATEGORY_OUTPUT,
+    alias: "c",
+    description: dedent_1`
+      Check if the given files are formatted, print a human-friendly summary
+      message and paths to unformatted files (see also --list-different).
+    `
+  },
+  color: {
+    // The supports-color package (a sub sub dependency) looks directly at
+    // `process.argv` for `--no-color` and such-like options. The reason it is
+    // listed here is to avoid "Ignored unknown option: --no-color" warnings.
+    // See https://github.com/chalk/supports-color/#info for more information.
+    type: "boolean",
+    default: true,
+    description: "Colorize error messages.",
+    oppositeDescription: "Do not colorize error messages."
+  },
+  config: {
+    type: "path",
+    category: coreOptions$1.CATEGORY_CONFIG,
+    description: "Path to a Prettier configuration file (.prettierrc, package.json, prettier.config.js).",
+    oppositeDescription: "Do not look for a configuration file.",
+    exception: function exception(value) {
+      return value === false;
+    }
+  },
+  "config-precedence": {
+    type: "choice",
+    category: coreOptions$1.CATEGORY_CONFIG,
+    default: "cli-override",
+    choices: [{
+      value: "cli-override",
+      description: "CLI options take precedence over config file"
+    }, {
+      value: "file-override",
+      description: "Config file take precedence over CLI options"
+    }, {
+      value: "prefer-file",
+      description: dedent_1`
+          If a config file is found will evaluate it and ignore other CLI options.
+          If no config file is found CLI options will evaluate as normal.
+        `
+    }],
+    description: "Define in which order config files and CLI options should be evaluated."
+  },
+  "debug-benchmark": {
+    // Run the formatting benchmarks. Requires 'benchmark' module to be installed.
+    type: "boolean"
+  },
+  "debug-check": {
+    // Run the formatting once again on the formatted output, throw if different.
+    type: "boolean"
+  },
+  "debug-print-doc": {
+    type: "boolean"
+  },
+  "debug-repeat": {
+    // Repeat the formatting a few times and measure the average duration.
+    type: "int",
+    default: 0
+  },
+  editorconfig: {
+    type: "boolean",
+    category: coreOptions$1.CATEGORY_CONFIG,
+    description: "Take .editorconfig into account when parsing configuration.",
+    oppositeDescription: "Don't take .editorconfig into account when parsing configuration.",
+    default: true
+  },
+  "find-config-path": {
+    type: "path",
+    category: coreOptions$1.CATEGORY_CONFIG,
+    description: "Find and print the path to a configuration file for the given input file."
+  },
+  "file-info": {
+    type: "path",
+    description: dedent_1`
+      Extract the following info (as JSON) for a given file path. Reported fields:
+      * ignored (boolean) - true if file path is filtered by --ignore-path
+      * inferredParser (string | null) - name of parser inferred from file path
+    `
+  },
+  help: {
+    type: "flag",
+    alias: "h",
+    description: dedent_1`
+      Show CLI usage, or details about the given flag.
+      Example: --help write
+    `,
+    exception: function exception(value) {
+      return value === "";
+    }
+  },
+  "ignore-path": {
+    type: "path",
+    category: coreOptions$1.CATEGORY_CONFIG,
+    default: ".prettierignore",
+    description: "Path to a file with patterns describing files to ignore."
+  },
+  "list-different": {
+    type: "boolean",
+    category: coreOptions$1.CATEGORY_OUTPUT,
+    alias: "l",
+    description: "Print the names of files that are different from Prettier's formatting (see also --check)."
+  },
+  loglevel: {
+    type: "choice",
+    description: "What level of logs to report.",
+    default: "log",
+    choices: ["silent", "error", "warn", "log", "debug"]
+  },
+  stdin: {
+    type: "boolean",
+    description: "Force reading input from stdin."
+  },
+  "support-info": {
+    type: "boolean",
+    description: "Print support information as JSON."
+  },
+  version: {
+    type: "boolean",
+    alias: "v",
+    description: "Print Prettier version."
+  },
+  "with-node-modules": {
+    type: "boolean",
+    category: coreOptions$1.CATEGORY_CONFIG,
+    description: "Process files inside 'node_modules' directory."
+  },
+  write: {
+    type: "boolean",
+    category: coreOptions$1.CATEGORY_OUTPUT,
+    description: "Edit files in-place. (Beware!)"
+  }
+};
+var usageSummary = dedent_1`
+  Usage: prettier [options] [file/glob ...]
+
+  By default, output is written to stdout.
+  Stdin is read if it is piped to Prettier and no files are given.
+`;
+var constant = {
+  categoryOrder,
+  options: options$21,
+  usageSummary
+};
+
+var OPTION_USAGE_THRESHOLD = 25;
+var CHOICE_USAGE_MARGIN = 3;
+var CHOICE_USAGE_INDENTATION = 2;
+
+function getOptions(argv, detailedOptions) {
+  return detailedOptions.filter(function (option) {
+    return option.forwardToApi;
+  }).reduce(function (current, option) {
+    return Object.assign(current, {
+      [option.forwardToApi]: argv[option.name]
+    });
+  }, {});
+}
+
+function cliifyOptions(object, apiDetailedOptionMap) {
+  return Object.keys(object || {}).reduce(function (output, key) {
+    var apiOption = apiDetailedOptionMap[key];
+    var cliKey = apiOption ? apiOption.name : key;
+    output[dashify(cliKey)] = object[key];
+    return output;
+  }, {});
+}
+
+function diff(a, b) {
+  return lib.createTwoFilesPatch("", "", a, b, "", "", {
+    context: 2
+  });
+}
+
+function handleError(context, filename, error) {
+  if (error instanceof errors.UndefinedParserError) {
+    if (context.argv["write"] && process.stdout.isTTY) {
+      readline.clearLine(process.stdout, 0);
+      readline.cursorTo(process.stdout, 0, null);
+    }
+
+    if (!context.argv["check"] && !context.argv["list-different"]) {
+      process.exitCode = 2;
+    }
+
+    context.logger.error(error.message);
+    return;
+  }
+
+  if (context.argv["write"]) {
+    // Add newline to split errors from filename line.
+    process.stdout.write("\n");
+  }
+
+  var isParseError = Boolean(error && error.loc);
+  var isValidationError = /Validation Error/.test(error && error.message); // For parse errors and validation errors, we only want to show the error
+  // message formatted in a nice way. `String(error)` takes care of that. Other
+  // (unexpected) errors are passed as-is as a separate argument to
+  // `console.error`. That includes the stack trace (if any), and shows a nice
+  // `util.inspect` of throws things that aren't `Error` objects. (The Flow
+  // parser has mistakenly thrown arrays sometimes.)
+
+  if (isParseError) {
+    context.logger.error(`${filename}: ${String(error)}`);
+  } else if (isValidationError || error instanceof errors.ConfigError) {
+    context.logger.error(String(error)); // If validation fails for one file, it will fail for all of them.
+
+    process.exit(1);
+  } else if (error instanceof errors.DebugError) {
+    context.logger.error(`${filename}: ${error.message}`);
+  } else {
+    context.logger.error(filename + ": " + (error.stack || error));
+  } // Don't exit the process if one file failed
+
+
+  process.exitCode = 2;
+}
+
+function logResolvedConfigPathOrDie(context) {
+  var configFile = prettier$2.resolveConfigFile.sync(context.argv["find-config-path"]);
+
+  if (configFile) {
+    context.logger.log(path.relative(process.cwd(), configFile));
+  } else {
+    process.exit(1);
+  }
+}
+
+function logFileInfoOrDie(context) {
+  var options$$2 = {
+    ignorePath: context.argv["ignore-path"],
+    withNodeModules: context.argv["with-node-modules"],
+    plugins: context.argv["plugin"],
+    pluginSearchDirs: context.argv["plugin-search-dir"]
+  };
+  context.logger.log(prettier$2.format(jsonStableStringify(prettier$2.getFileInfo.sync(context.argv["file-info"], options$$2)), {
+    parser: "json"
+  }));
+}
+
+function writeOutput(context, result, options$$2) {
+  // Don't use `console.log` here since it adds an extra newline at the end.
+  process.stdout.write(context.argv["debug-check"] ? result.filepath : result.formatted);
+
+  if (options$$2 && options$$2.cursorOffset >= 0) {
+    process.stderr.write(result.cursorOffset + "\n");
+  }
+}
+
+function listDifferent(context, input, options$$2, filename) {
+  if (!context.argv["check"] && !context.argv["list-different"]) {
+    return;
+  }
+
+  try {
+    if (!options$$2.filepath && !options$$2.parser) {
+      throw new errors.UndefinedParserError("No parser and no file path given, couldn't infer a parser.");
+    }
+
+    if (!prettier$2.check(input, options$$2)) {
+      if (!context.argv["write"]) {
+        context.logger.log(filename);
+        process.exitCode = 1;
+      }
+    }
+  } catch (error) {
+    context.logger.error(error.message);
+  }
+
+  return true;
+}
+
+function format$1(context, input, opt) {
+  if (!opt.parser && !opt.filepath) {
+    throw new errors.UndefinedParserError("No parser and no file path given, couldn't infer a parser.");
+  }
+
+  if (context.argv["debug-print-doc"]) {
+    var doc = prettier$2.__debug.printToDoc(input, opt);
+
+    return {
+      formatted: prettier$2.__debug.formatDoc(doc)
+    };
+  }
+
+  if (context.argv["debug-check"]) {
+    var pp = prettier$2.format(input, opt);
+    var pppp = prettier$2.format(pp, opt);
+
+    if (pp !== pppp) {
+      throw new errors.DebugError("prettier(input) !== prettier(prettier(input))\n" + diff(pp, pppp));
+    } else {
+      var _stringify = function _stringify(obj) {
+        return JSON.stringify(obj, null, 2);
+      };
+
+      var ast = _stringify(prettier$2.__debug.parse(input, opt,
+      /* massage */
+      true).ast);
+
+      var past = _stringify(prettier$2.__debug.parse(pp, opt,
+      /* massage */
+      true).ast);
+
+      if (ast !== past) {
+        var MAX_AST_SIZE = 2097152; // 2MB
+
+        var astDiff = ast.length > MAX_AST_SIZE || past.length > MAX_AST_SIZE ? "AST diff too large to render" : diff(ast, past);
+        throw new errors.DebugError("ast(input) !== ast(prettier(input))\n" + astDiff + "\n" + diff(input, pp));
+      }
+    }
+
+    return {
+      formatted: pp,
+      filepath: opt.filepath || "(stdin)\n"
+    };
+  }
+  /* istanbul ignore if */
+
+
+  if (context.argv["debug-benchmark"]) {
+    var benchmark;
+
+    try {
+      benchmark = require("benchmark");
+    } catch (err) {
+      context.logger.debug("'--debug-benchmark' requires the 'benchmark' package to be installed.");
+      process.exit(2);
+    }
+
+    context.logger.debug("'--debug-benchmark' option found, measuring formatWithCursor with 'benchmark' module.");
+    var suite = new benchmark.Suite();
+    suite.add("format", function () {
+      prettier$2.formatWithCursor(input, opt);
+    }).on("cycle", function (event) {
+      var results = {
+        benchmark: String(event.target),
+        hz: event.target.hz,
+        ms: event.target.times.cycle * 1000
+      };
+      context.logger.debug("'--debug-benchmark' measurements for formatWithCursor: " + JSON.stringify(results, null, 2));
+    }).run({
+      async: false
+    });
+  } else if (context.argv["debug-repeat"] > 0) {
+    var repeat = context.argv["debug-repeat"];
+    context.logger.debug("'--debug-repeat' option found, running formatWithCursor " + repeat + " times."); // should be using `performance.now()`, but only `Date` is cross-platform enough
+
+    var now = Date.now ? function () {
+      return Date.now();
+    } : function () {
+      return +new Date();
+    };
+    var totalMs = 0;
+
+    for (var i = 0; i < repeat; ++i) {
+      var startMs = now();
+      prettier$2.formatWithCursor(input, opt);
+      totalMs += now() - startMs;
+    }
+
+    var averageMs = totalMs / repeat;
+    var results = {
+      repeat,
+      hz: 1000 / averageMs,
+      ms: averageMs
+    };
+    context.logger.debug("'--debug-repeat' measurements for formatWithCursor: " + JSON.stringify(results, null, 2));
+  }
+
+  return prettier$2.formatWithCursor(input, opt);
+}
+
+function getOptionsOrDie(context, filePath) {
+  try {
+    if (context.argv["config"] === false) {
+      context.logger.debug("'--no-config' option found, skip loading config file.");
+      return null;
+    }
+
+    context.logger.debug(context.argv["config"] ? `load config file from '${context.argv["config"]}'` : `resolve config from '${filePath}'`);
+    var options$$2 = prettier$2.resolveConfig.sync(filePath, {
+      editorconfig: context.argv["editorconfig"],
+      config: context.argv["config"]
+    });
+    context.logger.debug("loaded options `" + JSON.stringify(options$$2) + "`");
+    return options$$2;
+  } catch (error) {
+    context.logger.error("Invalid configuration file: " + error.message);
+    process.exit(2);
+  }
+}
+
+function getOptionsForFile(context, filepath) {
+  var options$$2 = getOptionsOrDie(context, filepath);
+  var hasPlugins = options$$2 && options$$2.plugins;
+
+  if (hasPlugins) {
+    pushContextPlugins(context, options$$2.plugins);
+  }
+
+  var appliedOptions = Object.assign({
+    filepath
+  }, applyConfigPrecedence(context, options$$2 && optionsNormalizer.normalizeApiOptions(options$$2, context.supportOptions, {
+    logger: context.logger
+  })));
+  context.logger.debug(`applied config-precedence (${context.argv["config-precedence"]}): ` + `${JSON.stringify(appliedOptions)}`);
+
+  if (hasPlugins) {
+    popContextPlugins(context);
+  }
+
+  return appliedOptions;
+}
+
+function parseArgsToOptions(context, overrideDefaults) {
+  var minimistOptions = createMinimistOptions(context.detailedOptions);
+  var apiDetailedOptionMap = createApiDetailedOptionMap(context.detailedOptions);
+  return getOptions(optionsNormalizer.normalizeCliOptions(minimist_1(context.args, Object.assign({
+    string: minimistOptions.string,
+    boolean: minimistOptions.boolean,
+    default: cliifyOptions(overrideDefaults, apiDetailedOptionMap)
+  })), context.detailedOptions, {
+    logger: false
+  }), context.detailedOptions);
+}
+
+function applyConfigPrecedence(context, options$$2) {
+  try {
+    switch (context.argv["config-precedence"]) {
+      case "cli-override":
+        return parseArgsToOptions(context, options$$2);
+
+      case "file-override":
+        return Object.assign({}, parseArgsToOptions(context), options$$2);
+
+      case "prefer-file":
+        return options$$2 || parseArgsToOptions(context);
+    }
+  } catch (error) {
+    context.logger.error(error.toString());
+    process.exit(2);
+  }
+}
+
+function formatStdin(context) {
+  var filepath = context.argv["stdin-filepath"] ? path.resolve(process.cwd(), context.argv["stdin-filepath"]) : process.cwd();
+  var ignorer = createIgnorerFromContextOrDie(context);
+  var relativeFilepath = path.relative(process.cwd(), filepath);
+  thirdParty$1.getStream(process.stdin).then(function (input) {
+    if (relativeFilepath && ignorer.filter([relativeFilepath]).length === 0) {
+      writeOutput(context, {
+        formatted: input
+      });
+      return;
+    }
+
+    var options$$2 = getOptionsForFile(context, filepath);
+
+    try {
+      if (listDifferent(context, input, options$$2, "(stdin)")) {
+        return;
+      }
+
+      writeOutput(context, format$1(context, input, options$$2), options$$2);
+    } catch (error) {
+      handleError(context, "stdin", error);
+    }
+  });
+}
+
+function createIgnorerFromContextOrDie(context) {
+  try {
+    return createIgnorer_1.sync(context.argv["ignore-path"], context.argv["with-node-modules"]);
+  } catch (e) {
+    context.logger.error(e.message);
+    process.exit(2);
+  }
+}
+
+function eachFilename(context, patterns, callback) {
+  // The '!./' globs are due to https://github.com/prettier/prettier/issues/2110
+  var ignoreNodeModules = context.argv["with-node-modules"] !== true;
+
+  if (ignoreNodeModules) {
+    patterns = patterns.concat(["!**/node_modules/**", "!./node_modules/**"]);
+  }
+
+  patterns = patterns.concat(["!**/.{git,svn,hg}/**", "!./.{git,svn,hg}/**"]);
+
+  try {
+    var filePaths = globby.sync(patterns, {
+      dot: true,
+      nodir: true
+    }).map(function (filePath) {
+      return path.relative(process.cwd(), filePath);
+    });
+
+    if (filePaths.length === 0) {
+      context.logger.error(`No matching files. Patterns tried: ${patterns.join(" ")}`);
+      process.exitCode = 2;
+      return;
+    }
+
+    filePaths.forEach(function (filePath) {
+      return callback(filePath, Object.assign(getOptionsForFile(context, filePath), {
+        filepath: filePath
+      }));
+    });
+  } catch (error) {
+    context.logger.error(`Unable to expand glob patterns: ${patterns.join(" ")}\n${error.message}`); // Don't exit the process if one pattern failed
+
+    process.exitCode = 2;
+  }
+}
+
+function formatFiles(context) {
+  // The ignorer will be used to filter file paths after the glob is checked,
+  // before any files are actually written
+  var ignorer = createIgnorerFromContextOrDie(context);
+  var numberOfUnformattedFilesFound = 0;
+
+  if (context.argv["check"]) {
+    context.logger.log("Checking formatting...");
+  }
+
+  eachFilename(context, context.filePatterns, function (filename, options$$2) {
+    var fileIgnored = ignorer.filter([filename]).length === 0;
+
+    if (fileIgnored && (context.argv["debug-check"] || context.argv["write"] || context.argv["check"] || context.argv["list-different"])) {
+      return;
+    }
+
+    if (process.stdout.isTTY) {
+      // Don't use `console.log` here since we need to replace this line.
+      context.logger.log(filename, {
+        newline: false
+      });
+    }
+
+    var input;
+
+    try {
+      input = fs.readFileSync(filename, "utf8");
+    } catch (error) {
+      // Add newline to split errors from filename line.
+      context.logger.log("");
+      context.logger.error(`Unable to read file: ${filename}\n${error.message}`); // Don't exit the process if one file failed
+
+      process.exitCode = 2;
+      return;
+    }
+
+    if (fileIgnored) {
+      writeOutput(context, {
+        formatted: input
+      }, options$$2);
+      return;
+    }
+
+    var start = Date.now();
+    var result;
+    var output;
+
+    try {
+      result = format$1(context, input, Object.assign({}, options$$2, {
+        filepath: filename
+      }));
+      output = result.formatted;
+    } catch (error) {
+      handleError(context, filename, error);
+      return;
+    }
+
+    var isDifferent = output !== input;
+
+    if (process.stdout.isTTY) {
+      // Remove previously printed filename to log it with duration.
+      readline.clearLine(process.stdout, 0);
+      readline.cursorTo(process.stdout, 0, null);
+    }
+
+    if (context.argv["write"]) {
+      // Don't write the file if it won't change in order not to invalidate
+      // mtime based caches.
+      if (isDifferent) {
+        if (!context.argv["check"] && !context.argv["list-different"]) {
+          context.logger.log(`${filename} ${Date.now() - start}ms`);
+        }
+
+        try {
+          fs.writeFileSync(filename, output, "utf8");
+        } catch (error) {
+          context.logger.error(`Unable to write file: ${filename}\n${error.message}`); // Don't exit the process if one file failed
+
+          process.exitCode = 2;
+        }
+      } else if (!context.argv["check"] && !context.argv["list-different"]) {
+        context.logger.log(`${chalk$2.grey(filename)} ${Date.now() - start}ms`);
+      }
+    } else if (context.argv["debug-check"]) {
+      if (result.filepath) {
+        context.logger.log(result.filepath);
+      } else {
+        process.exitCode = 2;
+      }
+    } else if (!context.argv["check"] && !context.argv["list-different"]) {
+      writeOutput(context, result, options$$2);
+    }
+
+    if ((context.argv["check"] || context.argv["list-different"]) && isDifferent) {
+      context.logger.log(filename);
+      numberOfUnformattedFilesFound += 1;
+    }
+  }); // Print check summary based on expected exit code
+
+  if (context.argv["check"]) {
+    context.logger.log(numberOfUnformattedFilesFound === 0 ? "All matched files use Prettier code style!" : context.argv["write"] ? "Code style issues fixed in the above file(s)." : "Code style issues found in the above file(s). Forgot to run Prettier?");
+  } // Ensure non-zero exitCode when using --check/list-different is not combined with --write
+
+
+  if ((context.argv["check"] || context.argv["list-different"]) && numberOfUnformattedFilesFound > 0 && !process.exitCode && !context.argv["write"]) {
+    process.exitCode = 1;
+  }
+}
+
+function getOptionsWithOpposites(options$$2) {
+  // Add --no-foo after --foo.
+  var optionsWithOpposites = options$$2.map(function (option) {
+    return [option.description ? option : null, option.oppositeDescription ? Object.assign({}, option, {
+      name: `no-${option.name}`,
+      type: "boolean",
+      description: option.oppositeDescription
+    }) : null];
+  });
+  return flattenArray(optionsWithOpposites).filter(Boolean);
+}
+
+function createUsage(context) {
+  var options$$2 = getOptionsWithOpposites(context.detailedOptions).filter( // remove unnecessary option (e.g. `semi`, `color`, etc.), which is only used for --help <flag>
+  function (option) {
+    return !(option.type === "boolean" && option.oppositeDescription && !option.name.startsWith("no-"));
+  });
+  var groupedOptions = groupBy(options$$2, function (option) {
+    return option.category;
+  });
+  var firstCategories = constant.categoryOrder.slice(0, -1);
+  var lastCategories = constant.categoryOrder.slice(-1);
+  var restCategories = Object.keys(groupedOptions).filter(function (category) {
+    return firstCategories.indexOf(category) === -1 && lastCategories.indexOf(category) === -1;
+  });
+  var allCategories = firstCategories.concat(restCategories, lastCategories);
+  var optionsUsage = allCategories.map(function (category) {
+    var categoryOptions = groupedOptions[category].map(function (option) {
+      return createOptionUsage(context, option, OPTION_USAGE_THRESHOLD);
+    }).join("\n");
+    return `${category} options:\n\n${indent$11(categoryOptions, 2)}`;
+  });
+  return [constant.usageSummary].concat(optionsUsage, [""]).join("\n\n");
+}
+
+function createOptionUsage(context, option, threshold) {
+  var header = createOptionUsageHeader(option);
+  var optionDefaultValue = getOptionDefaultValue(context, option.name);
+  return createOptionUsageRow(header, `${option.description}${optionDefaultValue === undefined ? "" : `\nDefaults to ${createDefaultValueDisplay(optionDefaultValue)}.`}`, threshold);
+}
+
+function createDefaultValueDisplay(value) {
+  return Array.isArray(value) ? `[${value.map(createDefaultValueDisplay).join(", ")}]` : value;
+}
+
+function createOptionUsageHeader(option) {
+  var name = `--${option.name}`;
+  var alias = option.alias ? `-${option.alias},` : null;
+  var type = createOptionUsageType(option);
+  return [alias, name, type].filter(Boolean).join(" ");
+}
+
+function createOptionUsageRow(header, content, threshold) {
+  var separator = header.length >= threshold ? `\n${" ".repeat(threshold)}` : " ".repeat(threshold - header.length);
+  var description = content.replace(/\n/g, `\n${" ".repeat(threshold)}`);
+  return `${header}${separator}${description}`;
+}
+
+function createOptionUsageType(option) {
+  switch (option.type) {
+    case "boolean":
+      return null;
+
+    case "choice":
+      return `<${option.choices.filter(function (choice) {
+        return choice.since !== null;
+      }).filter(function (choice) {
+        return !choice.deprecated;
+      }).map(function (choice) {
+        return choice.value;
+      }).join("|")}>`;
+
+    default:
+      return `<${option.type}>`;
+  }
+}
+
+function flattenArray(array) {
+  return [].concat.apply([], array);
+}
+
+function createChoiceUsages(choices, margin, indentation) {
+  var activeChoices = choices.filter(function (choice) {
+    return !choice.deprecated && choice.since !== null;
+  });
+  var threshold = activeChoices.map(function (choice) {
+    return choice.value.length;
+  }).reduce(function (current, length) {
+    return Math.max(current, length);
+  }, 0) + margin;
+  return activeChoices.map(function (choice) {
+    return indent$11(createOptionUsageRow(choice.value, choice.description, threshold), indentation);
+  });
+}
+
+function createDetailedUsage(context, flag) {
+  var option = getOptionsWithOpposites(context.detailedOptions).find(function (option) {
+    return option.name === flag || option.alias === flag;
+  });
+  var header = createOptionUsageHeader(option);
+  var description = `\n\n${indent$11(option.description, 2)}`;
+  var choices = option.type !== "choice" ? "" : `\n\nValid options:\n\n${createChoiceUsages(option.choices, CHOICE_USAGE_MARGIN, CHOICE_USAGE_INDENTATION).join("\n")}`;
+  var optionDefaultValue = getOptionDefaultValue(context, option.name);
+  var defaults = optionDefaultValue !== undefined ? `\n\nDefault: ${createDefaultValueDisplay(optionDefaultValue)}` : "";
+  var pluginDefaults = option.pluginDefaults && Object.keys(option.pluginDefaults).length ? `\nPlugin defaults:${Object.keys(option.pluginDefaults).map(function (key) {
+    return `\n* ${key}: ${createDefaultValueDisplay(option.pluginDefaults[key])}`;
+  })}` : "";
+  return `${header}${description}${choices}${defaults}${pluginDefaults}`;
+}
+
+function getOptionDefaultValue(context, optionName) {
+  // --no-option
+  if (!(optionName in context.detailedOptionMap)) {
+    return undefined;
+  }
+
+  var option = context.detailedOptionMap[optionName];
+
+  if (option.default !== undefined) {
+    return option.default;
+  }
+
+  var optionCamelName = camelcase(optionName);
+
+  if (optionCamelName in context.apiDefaultOptions) {
+    return context.apiDefaultOptions[optionCamelName];
+  }
+
+  return undefined;
+}
+
+function indent$11(str, spaces) {
+  return str.replace(/^/gm, " ".repeat(spaces));
+}
+
+function groupBy(array, getKey) {
+  return array.reduce(function (obj, item) {
+    var key = getKey(item);
+    var previousItems = key in obj ? obj[key] : [];
+    return Object.assign({}, obj, {
+      [key]: previousItems.concat(item)
+    });
+  }, Object.create(null));
+}
+
+function pick(object, keys) {
+  return !keys ? object : keys.reduce(function (reduced, key) {
+    return Object.assign(reduced, {
+      [key]: object[key]
+    });
+  }, {});
+}
+
+function createLogger(logLevel) {
+  return {
+    warn: createLogFunc("warn", "yellow"),
+    error: createLogFunc("error", "red"),
+    debug: createLogFunc("debug", "blue"),
+    log: createLogFunc("log")
+  };
+
+  function createLogFunc(loggerName, color) {
+    if (!shouldLog(loggerName)) {
+      return function () {};
+    }
+
+    var prefix = color ? `[${chalk$2[color](loggerName)}] ` : "";
+    return function (message, opts) {
+      opts = Object.assign({
+        newline: true
+      }, opts);
+      var stream = process[loggerName === "log" ? "stdout" : "stderr"];
+      stream.write(message.replace(/^/gm, prefix) + (opts.newline ? "\n" : ""));
+    };
+  }
+
+  function shouldLog(loggerName) {
+    switch (logLevel) {
+      case "silent":
+        return false;
+
+      default:
+        return true;
+
+      case "debug":
+        if (loggerName === "debug") {
+          return true;
+        }
+
+      // fall through
+
+      case "log":
+        if (loggerName === "log") {
+          return true;
+        }
+
+      // fall through
+
+      case "warn":
+        if (loggerName === "warn") {
+          return true;
+        }
+
+      // fall through
+
+      case "error":
+        return loggerName === "error";
+    }
+  }
+}
+
+function normalizeDetailedOption(name, option) {
+  return Object.assign({
+    category: coreOptions$1.CATEGORY_OTHER
+  }, option, {
+    choices: option.choices && option.choices.map(function (choice) {
+      var newChoice = Object.assign({
+        description: "",
+        deprecated: false
+      }, typeof choice === "object" ? choice : {
+        value: choice
+      });
+
+      if (newChoice.value === true) {
+        newChoice.value = ""; // backward compability for original boolean option
+      }
+
+      return newChoice;
+    })
+  });
+}
+
+function normalizeDetailedOptionMap(detailedOptionMap) {
+  return Object.keys(detailedOptionMap).sort().reduce(function (normalized, name) {
+    var option = detailedOptionMap[name];
+    return Object.assign(normalized, {
+      [name]: normalizeDetailedOption(name, option)
+    });
+  }, {});
+}
+
+function createMinimistOptions(detailedOptions) {
+  return {
+    // we use vnopts' AliasSchema to handle aliases for better error messages
+    alias: {},
+    boolean: detailedOptions.filter(function (option) {
+      return option.type === "boolean";
+    }).map(function (option) {
+      return [option.name].concat(option.alias || []);
+    }).reduce(function (a, b) {
+      return a.concat(b);
+    }),
+    string: detailedOptions.filter(function (option) {
+      return option.type !== "boolean";
+    }).map(function (option) {
+      return [option.name].concat(option.alias || []);
+    }).reduce(function (a, b) {
+      return a.concat(b);
+    }),
+    default: detailedOptions.filter(function (option) {
+      return !option.deprecated;
+    }).filter(function (option) {
+      return !option.forwardToApi || option.name === "plugin" || option.name === "plugin-search-dir";
+    }).filter(function (option) {
+      return option.default !== undefined;
+    }).reduce(function (current, option) {
+      return Object.assign({
+        [option.name]: option.default
+      }, current);
+    }, {})
+  };
+}
+
+function createApiDetailedOptionMap(detailedOptions) {
+  return detailedOptions.reduce(function (current, option) {
+    return option.forwardToApi && option.forwardToApi !== option.name ? Object.assign(current, {
+      [option.forwardToApi]: option
+    }) : current;
+  }, {});
+}
+
+function createDetailedOptionMap(supportOptions) {
+  return supportOptions.reduce(function (reduced, option) {
+    var newOption = Object.assign({}, option, {
+      name: option.cliName || dashify(option.name),
+      description: option.cliDescription || option.description,
+      category: option.cliCategory || coreOptions$1.CATEGORY_FORMAT,
+      forwardToApi: option.name
+    });
+
+    if (option.deprecated) {
+      delete newOption.forwardToApi;
+      delete newOption.description;
+      delete newOption.oppositeDescription;
+      newOption.deprecated = true;
+    }
+
+    return Object.assign(reduced, {
+      [newOption.name]: newOption
+    });
+  }, {});
+} //-----------------------------context-util-start-------------------------------
+
+/**
+ * @typedef {Object} Context
+ * @property logger
+ * @property args
+ * @property argv
+ * @property filePatterns
+ * @property supportOptions
+ * @property detailedOptions
+ * @property detailedOptionMap
+ * @property apiDefaultOptions
+ */
+
+
+function createContext(args) {
+  var context = {
+    args
+  };
+  updateContextArgv(context);
+  normalizeContextArgv(context, ["loglevel", "plugin", "plugin-search-dir"]);
+  context.logger = createLogger(context.argv["loglevel"]);
+  updateContextArgv(context, context.argv["plugin"], context.argv["plugin-search-dir"]);
+  return context;
+}
+
+function initContext(context) {
+  // split into 2 step so that we could wrap this in a `try..catch` in cli/index.js
+  normalizeContextArgv(context);
+}
+
+function updateContextOptions(context, plugins, pluginSearchDirs) {
+  var supportOptions = prettier$2.getSupportInfo(null, {
+    showDeprecated: true,
+    showUnreleased: true,
+    showInternal: true,
+    plugins,
+    pluginSearchDirs
+  }).options;
+  var detailedOptionMap = normalizeDetailedOptionMap(Object.assign({}, createDetailedOptionMap(supportOptions), constant.options));
+  var detailedOptions = arrayify(detailedOptionMap, "name");
+  var apiDefaultOptions = supportOptions.filter(function (optionInfo) {
+    return !optionInfo.deprecated;
+  }).reduce(function (reduced, optionInfo) {
+    return Object.assign(reduced, {
+      [optionInfo.name]: optionInfo.default
+    });
+  }, Object.assign({}, options.hiddenDefaults));
+  context.supportOptions = supportOptions;
+  context.detailedOptions = detailedOptions;
+  context.detailedOptionMap = detailedOptionMap;
+  context.apiDefaultOptions = apiDefaultOptions;
+}
+
+function pushContextPlugins(context, plugins, pluginSearchDirs) {
+  context._supportOptions = context.supportOptions;
+  context._detailedOptions = context.detailedOptions;
+  context._detailedOptionMap = context.detailedOptionMap;
+  context._apiDefaultOptions = context.apiDefaultOptions;
+  updateContextOptions(context, plugins, pluginSearchDirs);
+}
+
+function popContextPlugins(context) {
+  context.supportOptions = context._supportOptions;
+  context.detailedOptions = context._detailedOptions;
+  context.detailedOptionMap = context._detailedOptionMap;
+  context.apiDefaultOptions = context._apiDefaultOptions;
+}
+
+function updateContextArgv(context, plugins, pluginSearchDirs) {
+  pushContextPlugins(context, plugins, pluginSearchDirs);
+  var minimistOptions = createMinimistOptions(context.detailedOptions);
+  var argv = minimist_1(context.args, minimistOptions);
+  context.argv = argv;
+  context.filePatterns = argv["_"];
+}
+
+function normalizeContextArgv(context, keys) {
+  var detailedOptions = !keys ? context.detailedOptions : context.detailedOptions.filter(function (option) {
+    return keys.indexOf(option.name) !== -1;
+  });
+  var argv = !keys ? context.argv : pick(context.argv, keys);
+  context.argv = optionsNormalizer.normalizeCliOptions(argv, detailedOptions, {
+    logger: context.logger
+  });
+} //------------------------------context-util-end--------------------------------
+
+
+var util$5 = {
+  createContext,
+  createDetailedOptionMap,
+  createDetailedUsage,
+  createUsage,
+  format: format$1,
+  formatFiles,
+  formatStdin,
+  initContext,
+  logResolvedConfigPathOrDie,
+  logFileInfoOrDie,
+  normalizeDetailedOptionMap
+};
+
+function run(args) {
+  var context = util$5.createContext(args);
+
+  try {
+    util$5.initContext(context);
+    context.logger.debug(`normalized argv: ${JSON.stringify(context.argv)}`);
+
+    if (context.argv["check"] && context.argv["list-different"]) {
+      context.logger.error("Cannot use --check and --list-different together.");
+      process.exit(1);
+    }
+
+    if (context.argv["write"] && context.argv["debug-check"]) {
+      context.logger.error("Cannot use --write and --debug-check together.");
+      process.exit(1);
+    }
+
+    if (context.argv["find-config-path"] && context.filePatterns.length) {
+      context.logger.error("Cannot use --find-config-path with multiple files");
+      process.exit(1);
+    }
+
+    if (context.argv["file-info"] && context.filePatterns.length) {
+      context.logger.error("Cannot use --file-info with multiple files");
+      process.exit(1);
+    }
+
+    if (context.argv["version"]) {
+      context.logger.log(prettier$2.version);
+      process.exit(0);
+    }
+
+    if (context.argv["help"] !== undefined) {
+      context.logger.log(typeof context.argv["help"] === "string" && context.argv["help"] !== "" ? util$5.createDetailedUsage(context, context.argv["help"]) : util$5.createUsage(context));
+      process.exit(0);
+    }
+
+    if (context.argv["support-info"]) {
+      context.logger.log(prettier$2.format(jsonStableStringify(prettier$2.getSupportInfo()), {
+        parser: "json"
+      }));
+      process.exit(0);
+    }
+
+    var hasFilePatterns = context.filePatterns.length !== 0;
+    var useStdin = context.argv["stdin"] || !hasFilePatterns && !process.stdin.isTTY;
+
+    if (context.argv["find-config-path"]) {
+      util$5.logResolvedConfigPathOrDie(context);
+    } else if (context.argv["file-info"]) {
+      util$5.logFileInfoOrDie(context);
+    } else if (useStdin) {
+      util$5.formatStdin(context);
+    } else if (hasFilePatterns) {
+      util$5.formatFiles(context);
+    } else {
+      context.logger.log(util$5.createUsage(context));
+      process.exit(1);
+    }
+  } catch (error) {
+    context.logger.error(error.message);
+    process.exit(1);
+  }
+}
+
+var cli = {
+  run
+};
+
+cli.run(process.argv.slice(2));
+var prettier = {};
 
 module.exports = prettier;
