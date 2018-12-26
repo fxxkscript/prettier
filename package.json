@@ -1,5 +1,5 @@
 {
-  "name": "@changjinglu/prettier",
+  "name": "prettier",
   "version": "1.16.0-dev",
   "description": "Prettier is an opinionated code formatter",
   "bin": "./bin-prettier.js",
